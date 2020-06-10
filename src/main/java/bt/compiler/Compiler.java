@@ -1083,7 +1083,7 @@ public class Compiler {
 							stack.pollLast(); // remove the "this" from stack
 
 							code.put(OpCode.e_op_code_SLP_DAT);
-							code.putInt(tmpVar1);
+							code.putInt(arg1.address);
 						} else if (mi.name.equals("sendAmount")) {
 							arg1 = popVar(m, tmpVar1, false); // address
 							arg2 = popVar(m, tmpVar2, false); // amount
@@ -1364,7 +1364,7 @@ public class Compiler {
 							int pos = Integer.parseInt(mi.name.substring(mi.name.length() - 1)) - 1;
 							pushVar(m, values[pos].address);
 						}
-						if (mi.name.equals("equals")) {
+						else if (mi.name.equals("equals")) {
 							code.put(OpCode.e_op_code_CLR_DAT);
 							code.putInt(tmpVar5);
 
